@@ -1,0 +1,45 @@
+<%= render "shared/header" %>
+
+  <div>
+    あなたのプロフィール
+  </div>
+
+
+<div>
+  <h2>プロフィールを作成してください</h2>
+  <%= form_with model: @profile, url: profiles_path, method: :post, local: true do |f| %>
+
+  <%= render 'shared/error_messages', model: f.object %>
+
+  <div class="image-field">
+    <%= f.label :image, "プロフィール画像" %><br />
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="trans-experience">
+    <h4>性転換歴</h4>
+  </div>
+  <div>
+    <%= f.collection_select(:trans_exp_id, TransExp.all, :id, :name, {}, {class:"select-box", id:"trans-experience"}) %>
+  </div>
+
+  <div class="papa-experience">
+    <h4>パパ活歴</h4>
+  </div>
+  <div>
+    <%= f.collection_select(:papa_exp_id, PapaExp.all, :id, :name, {}, {class:"select-box", id:"papa-experience"}) %>
+  </div>
+    
+
+  <h4>プロフィール</h4>
+  <div>
+      <%= f.text_area :text, class:"text-text", id:"text_id", placeholder:"プロフィールを入力してください", rows: "13", cols: "70" %>
+  </div>
+
+  <%= f.submit "作成する" ,class:"create-btn" %>
+  <% end %>
+</div>
+
+<div class="go-back-homepage">
+  <%=link_to "ホームへ戻る", root_path %>
+</div>

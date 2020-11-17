@@ -1,0 +1,24 @@
+<%= render "shared/header" %>
+
+<div>
+  ブックマーク一覧
+</div>
+
+<% @bookmarks.each  do |bookmark| %>
+  <div>
+    <%= "#{bookmark.question.user.nickname}さんによる投稿" %>
+  </div>
+  <div>
+    <%= link_to "質問タイトル：#{bookmark.question.title.truncate(20)}", question_path(bookmark.question.id) %>
+  </div>
+  <div>
+    <%= bookmark.question.text.truncate(40) %><%= link_to "続きを読む", question_path(bookmark.question.id)%>
+  </div>
+  <div>
+    <%= link_to "#{bookmark.question.user.nickname}さんのプロフィールを見る", profile_path(bookmark.question.user) %>
+  </div>
+<% end %>
+
+<div class="go-back-homepage">
+  <%=link_to "ホームへ戻る", root_path %>
+</div>

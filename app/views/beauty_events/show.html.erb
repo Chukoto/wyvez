@@ -1,0 +1,51 @@
+<%= render "shared/header" %>
+
+<h1>美容スケジュール</h1>
+
+<div>
+  美容スケジュールを管理しましょう！
+</div>
+<div>
+  性転換女子に必要な、ホルモン注射・豊胸手術・声帯手術・性器手術<br>
+  美容整形や、エステ、マッサージ、ネイルなどのビューティーサロンなど、<br>
+  女性の美に欠かせない予定を、あなた専用のスケジュールにまとめましょう。
+</div>
+
+<div>
+  <%= link_to "美容スケジュールを作成する", new_beauty_event_path %>
+</div>
+
+<div>
+  <%= render "shared/map" %>
+</div>
+
+  <% @beauty_events.each do |beauty| %>
+  ----------------------------------------
+    <ul>
+      <div>
+        <%= "美容カテゴリ：#{beauty.beauty_cate.name}" %>
+      </div>
+      <div>
+        <%= "予約日時：#{beauty.started_at}"%>
+      </div>
+      <div>
+        <%= "場所：#{beauty.place}" %>
+      </div>
+      <div>
+        <%= "メモ：#{beauty.memo}" %>
+      </div>
+      <div>
+        <%= "施術コスト：#{beauty.cost}" %>
+      </div>
+      <div>
+        <%= "スケジュールの状態：#{beauty.status.name}" %>
+      </div>
+    </ul>
+
+    <div>
+    <% if user_signed_in? && current_user.id == beauty.user_id %>
+      <%= link_to "編集する", edit_beauty_event_path(beauty.id), method: :get %>
+      <%= link_to "削除する", beauty_event_path(beauty.id), method: :delete %>
+    <% end %>
+    </div>
+  <% end %>

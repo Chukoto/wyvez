@@ -1,0 +1,78 @@
+<%= render "shared/header" %>
+
+<h1>パパ活スケジュールを編集しましょう</h1>
+
+<h3>パパ活のスケジュール情報を編集してください！</h3>
+
+<div class="papa_event-main">
+  <h2 class="papa_event-info">パパ活スケジュール</h2>
+<%= form_with(model:[@papa_event], url: papa_papa_event_path, method: :patch, local: true) do |f| %>
+
+<%= render 'shared/error_messages', model: f.object %>
+
+  <%# started_at %>
+  <div>
+  <%= f.label :started_at, '開始日', class: 'control-label' %>
+  <%= f.date_field :started_at, class: 'form-control' %>
+  <span class="indispensable">必須</span>
+  <%= f.label :started_at, '開始時間', class: 'control-label' %>
+  <%= f.time_field :started_at, class: 'form-control' %>
+  <span class="indispensable">必須</span>
+  </div>
+
+  <%# finished_at %>
+  <div>
+  <%= f.label :finished_at, '終了日', class: 'control-label' %>
+  <%= f.date_field :finished_at, class: 'form-control' %>
+  <span class="indispensable">必須</span>
+  <%= f.label :finished_at, '終了時間', class: 'control-label' %>
+  <%= f.time_field :finished_at, class: 'form-control' %>
+  <span class="indispensable">必須</span>
+  </div>
+
+  <%# do_what_id %>
+  <div>
+    やること
+    <span class="indispensable">必須</span>
+  </div>
+  <%= f.collection_select(:do_what_id, DoWhat.all, :id, :name, {}, {class:"do_what-select"}) %>
+
+  <%# todo %>
+  <div class="papa_event-todo">
+    todo
+  </div>
+  <%= f.text_area :todo, class:"todo-input", id:"todo_id", placeholder:"実行すべき行動をメモを記入してください", rows: "10", cols: "80" %>
+
+  <%# place %>
+  <div class="papa_event-place">
+    場所 
+  </div>
+  <%= f.text_field :place, class:"place-input", id:"place_id", placeholder:"場所の名前や住所（必須 82文字まで）", maxlength:"82" %>
+  
+  <%# expected_reward %>
+  <div class="papa_event-expected_reward">
+    見込み報酬額
+    <span class="indispensable">必須</span>
+  </div>
+  <%= f.text_field :expected_reward, class:"expected_reward-input", id:"expected_reward_id", placeholder:"半角数字で記入" %>
+
+  <%# reward %>
+  <div class="papa_event-name">
+    獲得報酬額（受取後記入）
+  </div>
+  <%= f.text_field :reward, class:"reward-input", id:"reward_id", placeholder:"半角数字で記入" %>
+
+  <%# status_id %>
+  <div>
+  スケジュールの状態
+    <span class="indispensable">必須</span>
+  </div>
+  <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"status-select"}) %>
+
+  <%# 送信ボタン %>
+  <div class="question-submit-btn">
+    <%= f.submit "スケジュールを更新する", class:"papa-submit-btn" %>
+  </div>
+
+  <% end %>
+</div>

@@ -1,0 +1,16 @@
+<div class="question-list">
+  <h3>
+    質問タイトル：<%= link_to question.title.truncate(20), question_path(question.id) %>
+  </h3>
+  <div>
+    <%= question.text.truncate(40) %><%= link_to "続きを読む", question_path(question.id)%>
+  </div>
+  <div>
+    <% if question.image.present? %>
+      <div>画像あり</div>
+    <% end %>
+  </div>
+  <div class="posted-by">
+    <%= link_to question.user.nickname, profile_path(question.user.id) %>さんによる投稿
+  </div>
+</div>

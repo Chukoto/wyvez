@@ -1,0 +1,67 @@
+<%= render "shared/header" %>
+
+<h1>パパリストにパパを編集しましょう</h1>
+
+<h3>今後パパ活をするパパの情報を記入してください！</h3>
+<i>※注意 個人を特定する情報や本名の登録は避けてください！！！</i>
+
+<div class="papa-main">
+  <h2 class="papa-info">パパの情報</h2>
+  <%= form_with model: @papa, url: papa_path, method: :patch, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+  <%# 画像添付 %>
+  <div class="image-field">
+    <%= f.label :image, "パパに関する画像" %><br />
+    <%= f.file_field :image %>
+  </div>
+
+  <%# パパの名前 %>
+  <div class="papa-name">
+    パパの名前
+    <span class="indispensable">必須</span>
+  </div>
+  <%= f.text_field :name, class:"name-input", id:"name_id", placeholder:"パパの名前を入力（必須 40文字まで)", maxlength:"40" %>
+  
+  <%# パパの年齢 %>
+  <div class="papa-age">
+    年齢
+    <span class="indispensable">必須</span>
+  </div>
+  <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box", id:"age"}) %>
+
+  <%# パパの婚歴 %>
+  <div class="papa-marriage">
+    婚歴
+    <span class="indispensable">必須</span>
+  </div>
+  <%= f.collection_select(:marriage_id, Marriage.all, :id, :name, {}, {class:"select-box", id:"marriage"}) %>
+
+  <%# 子どもの有無 %>
+  <div class="papa-child">
+    子どもの有無 
+    <span class="indispensable">必須</span>
+  </div>
+  <%= f.collection_select(:child_id, Child.all, :id, :name, {}, {class:"select-box", id:"child"}) %>
+  
+  <%# 連絡アプリ名 %>
+  <div class="papa-name">
+    連絡アプリ名
+    <span class="indispensable">必須</span>
+  </div>
+  <%= f.text_field :app_name, class:"app_name-input", id:"app_name_id", placeholder:"Tinder, Pairs, LINEなど（必須 40文字まで）", maxlength:"40" %>
+
+  <%# パパに関するメモ %>
+  <div class="papa-name">
+    パパに関するメモ
+  </div>
+  <%= f.text_area :memo, class:"memo-input", id:"memo_id", placeholder:"必要に応じてメモを記入してください", rows: "10", cols: "80" %>
+
+  <%# 送信ボタン %>
+  <div class="question-submit-btn">
+    <%= f.submit "パパを更新する", class:"papa-submit-btn" %>
+  </div>
+
+  <% end %>
+</div>

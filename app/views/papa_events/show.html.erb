@@ -1,0 +1,57 @@
+<%= render "shared/header" %>
+
+<h1>パパ活スケジュール</h1>
+
+<div>
+  パパ活スケジュールを管理しましょう
+</div>
+
+<div>
+  <%= link_to "パパ活スケジュールを作成する", new_papa_papa_event_path %>
+</div>
+
+<div>
+  <%= render "shared/map" %>
+</div>
+
+  <% @papa_events.each do |event| %>
+  ----------------------------------------
+    <ul>
+      <div>
+        <%= "パパの名前：#{event.papa.name}" %>
+      </div>
+      <div>
+        <%= "アプリ：#{event.papa.app_name}" %>
+      </div>
+      <div>
+        <%= "開始日：#{event.started_at}"%>
+      </div>
+      <div>
+        <%= "終了日：#{event.finished_at}" %>
+      </div>
+      <div>
+        <%= "やること：#{event.do_what.name}" %>
+      </div>
+      <div>
+        <%= "todo：#{event.todo}" %>
+      </div>
+      <div>
+        <%= "場所：#{event.place}" %>
+      </div>
+      <div>
+        <%= "見込み報酬額：#{event.expected_reward}" %>
+      </div>
+      <div>
+        <%= "報酬：#{event.reward}" %>
+      </div>
+      <div>
+        <%= "スケジュールの状態：#{event.status.name}" %>
+      </div>
+    </ul>
+    <div>
+    <% if user_signed_in? && current_user.id == event.user_id %>
+      <%= link_to "編集する", edit_papa_papa_event_path(event.papa_id, event.id), method: :get %>
+      <%= link_to "削除する", papa_papa_event_path(event.papa_id, event.id), method: :delete %>
+    <% end %>
+    </div>
+  <% end %>
