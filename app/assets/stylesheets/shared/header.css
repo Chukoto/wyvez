@@ -10,7 +10,8 @@
   top: 0;
   z-index:2;
   padding:5px;
-  background: white;
+  border-bottom: #afa3b5 solid 1px;
+  background: #ef89d2
 }
 
 .header-margin {
@@ -19,26 +20,46 @@
 }
 
 .wyvez-logo {
-  background-color: white;
+  /* background-color: white; */
   width: 10vw;
   height: auto;
 }
 
 .wyvez-menu {
-  background-color: white;
+  /* background-color: white; */
   width: 90vw;
   height: auto;
   display: flex;
   justify-content: space-between;
 }
 
-.menu-lists li {
-  display: inline-block;
+.menu-lists {
+  display: flex;
+}
+
+.list {
   text-decoration: none;
+  margin: 20px;
+  color: #202c2d;
 }
 
 .user-info {
-  background-color: white;
+  background-color: #ef89d2;
+  color: white;
+  position: relative;
+  display: flex;
+}
+
+.user-menu {
+  margin-top: 25px;
+  position: absolute;
+}
+
+.image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
 }
 
 .user-image {
@@ -46,17 +67,24 @@
   height: 60px;
   position: relative;
   overflow: hidden;
-  border-radius: 300px; /*追加*/
+  border-radius: 300px;
   margin: auto;
 }
 
-.image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -40%); /*調整*/
+.btn-group .button {
+  background-color: #ef89d2;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+  margin: 10px 20px;
 }
-.login-menu {
-  background-color: blue;
-  width: 50vh;
+
+.btn-group .button:hover {
+  background-color: #efadd2;
 }
