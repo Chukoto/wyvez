@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+.top-header {
+  width: 100vw;
+  padding: 3vh 10vw;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index:2;
+  padding:5px;
+  background: white;
+}
+
+.header-margin {
+  margin: 15px 90px;
+  display: flex;
+}
+
+.wyvez-logo {
+  background-color: white;
+  width: 10vw;
+  height: auto;
+}
+
+.wyvez-menu {
+  background-color: white;
+  width: 90vw;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-lists li {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.user-info {
+  background-color: white;
+}
+
+.user-image {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 300px; /*追加*/
+  margin: auto;
+}
+
+.image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%); /*調整*/
+}
+.login-menu {
+  background-color: blue;
+  width: 50vh;
+}
