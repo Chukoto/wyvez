@@ -1,18 +1,17 @@
 <header class='top-header'>
   <div class='header-margin'>
     <div class='wyvez-logo'>
-    <%= image_tag 'wyvez-logo.PNG', class: 'wyvez-logo'%>
+      <%= link_to image_tag('wyvez-logo.PNG', class: 'wyvez-logo'), "/" %>
     </div>
 
     <% if user_signed_in? %>
       <div class='wyvez-menu'>
-        <div class='menu-lists'>
-          <li><%= link_to 'ホーム', root_path %></li>
-          <li><%= link_to 'プロフィール', profile_path(current_user.id), class: "profile" %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-          <li><%= link_to 'ブックマークリスト', question_bookmarks_path(current_user.id) %></li>
-          <li><%= link_to 'パパリスト', papa_path(current_user.id), class: "papa" %></li>
-          <li><%= link_to '美容スケジュール', beauty_event_path(current_user.id), class: "beauty_event" %></li>
+        <div class="btn-group">
+        <ul class='menu-lists'>
+          <li><%= link_to 'ブックマークリスト', question_bookmarks_path(current_user.id), class: "button" %></li>
+          <li><%= link_to 'パパリスト', papa_path(current_user.id), class: "button" %></li>
+          <li><%= link_to '美容スケジュール', beauty_event_path(current_user.id), class: "button" %></li>
+        </ul>
         </div>
 
         <div class='user-info'>
@@ -22,15 +21,14 @@
               <%= image_tag current_user.profile.image.variant(resize: '80x80'), class: "image"  %>
             </div>
           <% end %>
-        </div>
-      </div>
-    <% end %>
 
-    <% unless user_signed_in? %>
-      <div class='login-menu'>
-        <div class='menu-lists'>
-          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+          <ul class='user-menu'>
+            <li><%= link_to 'プロフィール', profile_path(current_user.id), class: "list" %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "list" %></li>
+            <% else %>
+            <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+            <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+          </ul>
         </div>
       </div>
     <% end %>
