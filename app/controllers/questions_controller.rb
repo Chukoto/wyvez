@@ -1,7 +1,10 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:home, :index, :show]
   before_action :specified_question, only: [:show, :edit, :update, :destroy]
   before_action :specified_user, only: [:edit, :destroy]
+
+  def home
+  end
 
   def index
     @questions = Question.order('created_at DESC')
