@@ -1,0 +1,44 @@
+.margin {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.home-top-image {
+  position: relative;
+  }
+
+.home-top-image p {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  }
+
+.home-top-image img {
+  width: 100%;
+  }
+
+.about-wyvez h1 {
+  font-size: 40px;
+}
+
+.function-contents {
+  margin: 100px 0px;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.list h3 {
+  border-left: 10px solid #9cFFAF;
+  color: black;
+  font-size: 20px;
+}
