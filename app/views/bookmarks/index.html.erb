@@ -24,10 +24,10 @@
 </div>
 
 <% if user_signed_in? %>
-    <div class='question-btn'>
-      <span class='question-btn-text'>質問する</span>
-      <%= link_to new_question_path do %>
-        <%= image_tag 'Q.PNG' , size: '185x50' ,class: "question-btn-icon" %>
-      <% end %>
-    </div>
+  <div class='question-btn'>
+    <span class='question-btn-text'>質問する</span>
+    <%= link_to new_question_path do %>
+      <%= image_tag 'Q.PNG' , size: '185x50' ,class: "question-btn-icon" %>
     <% end %>
+  </div>
+<% end %>
