@@ -4,18 +4,17 @@
 
 .top-header {
   width: 100vw;
-  padding: 3vh 10vw;
   justify-content: space-between;
   position: sticky;
   top: 0;
   z-index:2;
   padding:5px;
-  border-bottom: #afa3b5 solid 1px;
-  background: #ef89d2
+  border-bottom: #4b4b4b solid 1px;
+  background: #FF9CEC;
 }
 
 .header-margin {
-  margin: 15px 90px;
+  margin: 0px 100px;
   display: flex;
 }
 
@@ -40,11 +39,11 @@
 .list {
   text-decoration: none;
   margin: 20px;
-  color: #202c2d;
+  color: #4b4b4b;
 }
 
 .user-info {
-  background-color: #ef89d2;
+  background-color: #FF9CEC;
   color: white;
   position: relative;
   display: flex;
@@ -72,19 +71,21 @@
 }
 
 .btn-group .button {
-  background-color: #ef89d2;
+  background-color:#FF9CEC;
   border: none;
-  color: white;
-  padding: 15px 32px;
+  color: #4b4b4b;
+  padding: 30px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  float: left;
-  margin: 10px 20px;
 }
 
 .btn-group .button:hover {
-  background-color: #efadd2;
+  background-color: #ffb4ec;
+}
+
+.login-signup {
+  margin-left: 813px;
 }
