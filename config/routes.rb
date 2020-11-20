@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'questions#index'
+  root to: 'questions#home'
 
+  get "questions/home" => "questions#home"
   post "bookmarks/:question_id/create" => "bookmarks#create"
   post "bookmarks/:question_id/destroy" => "bookmarks#destroy"
 
