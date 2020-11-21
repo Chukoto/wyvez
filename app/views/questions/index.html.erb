@@ -1,17 +1,7 @@
 <%= render "shared/header" %>
 
 <div class='main'>
-
-  <%# 画面上部に「Wyvezへようこそ」 %>
-  <h1>Wyvez</h1>
-  <h3>悩める性転換系女子のために</h3>
-  <h3>美と愛を管理するアプリ</h3>
-
-  <% if user_signed_in? %>
-  <div class='post-btn'>
-    <%= link_to '質問する', new_question_path %>
-  </div>
-  <% end %>
+  <div class=''>
 
   <%# 質問一覧 %>
   <div class='question-contents'>
@@ -20,12 +10,6 @@
     <%# 部分テンプレートで質問投稿一覧を表示する %>
     <%= render partial: 'question', collection: @questions %>
   </div>
-  <% if user_signed_in? %>
-    <div class='question-btn'>
-      <span class='question-btn-text'>質問する</span>
-      <%= link_to new_question_path do %>
-        <%= image_tag 'Q.PNG' , size: '185x50' ,class: "question-btn-icon" %>
-      <% end %>
-    </div>
-  <% end %>
 </div>
+
+<%= render "shared/question-btn" %>
