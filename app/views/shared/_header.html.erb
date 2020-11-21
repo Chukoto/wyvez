@@ -28,6 +28,12 @@
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "list" %></li>
           </ul>
           <% else %>
+          <div class='wyvez-menu'>
+          <div class="btn-group">
+          <ul class='menu-lists'>
+            <li><%= link_to '質問一覧', questions_path, class: "button" %></li>
+          </ul>
+          </div>
           <div class="login-signup">
             <div class="btn-group">
               <ul class='menu-lists'>
