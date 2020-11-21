@@ -10,7 +10,7 @@
   z-index:2;
   padding:5px;
   border-bottom: #4b4b4b solid 1px;
-  background: #FF9CEC;
+  background: #c481cf;
 }
 
 .header-margin {
@@ -43,7 +43,7 @@
 }
 
 .user-info {
-  background-color: #FF9CEC;
+  background-color: #c481cf;
   color: white;
   position: relative;
   display: flex;
@@ -71,7 +71,7 @@
 }
 
 .btn-group .button {
-  background-color:#FF9CEC;
+  background-color: #c481cf;
   border: none;
   color: #4b4b4b;
   padding: 30px 20px;
@@ -83,7 +83,7 @@
 }
 
 .btn-group .button:hover {
-  background-color: #ffb4ec;
+  background-color: #c491cf;
 }
 
 .login-signup {
