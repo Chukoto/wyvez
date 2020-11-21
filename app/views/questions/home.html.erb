@@ -17,7 +17,7 @@
       </h1> 
       <div class="wyvez-explanation">
         <p>
-          Wyvezは、女性として生きていく方達ならではの悩み、手術やパパ活の予定管理をサポートします。
+          Wyvez（ワイブズ）は、女性として生きていく方達ならではの悩み、手術やパパ活の予定管理をサポートします。
         </p>
         <br>既に性転換をした方はもちろんのこと、国籍上は男性だけど心は女性という方にもお使いいただけるアプリとなっております。
         <br>内容に関しては、ログインなしでも投稿された質問内容やそれに対するコメントを閲覧できます。
@@ -72,13 +72,51 @@
         </li>
       </ul>
     </div>
-    <% if user_signed_in? %>
-    <div class='question-btn'>
-      <span class='question-btn-text'>質問する</span>
-      <%= link_to new_question_path do %>
-        <%= image_tag 'Q.PNG' , size: '185x50' ,class: "question-btn-icon" %>
-      <% end %>
+
+    <div class="purpose">
+      <h2 class="title">
+        目的
+      </h2>
+      <ul class="purpose-lists">
+        <li class="list">
+          <h3 class='purpose-list-text'>
+            トランス女性向けのコンテンツを世に増やす、認知させる
+          </h3>
+        </li>
+        <li class="list">
+          <h3 class='purpose-list-text'>
+            トランス女性特有の美容関係のスケジュールをひとまとめに管理する
+          </h3>
+        </li>
+        <li class="list">
+          <h3 class='purpose-list-text'>
+            女性だからこそできるパパ活を管理する
+          </h3>
+        </li>
+        <p class='purpose-list-description'>
+          以前と比べてLGBTという単語は認知されつつあります。中でも、ゲイやレズビアン、バイセクシュアルは皆さんご存知かと思います。しかし、トランス女性向けのコンテンツを提供するサイトやアプリケーションはあまりにも少ないです。
+          仲間内に打ち明けられない悩み、同性にしかわからない質問を、同性同士で質問やコメントを通して解決の糸口を見いだして欲しいと考えています。また、女性になったからこその楽しみがあると思います。
+          <br>
+          <br>
+          <div class="emphasize-text">
+            より美しい女性になるための手術・ホルモン注射・美容整形・その他ビューティーサロン
+          </div>
+          <br>
+          <div class="emphasize-text">
+            女性だからこそできるお仕事、パパ活
+          </div>
+          <br>
+          <br>わずかに存在する潜在的ニーズに焦点を当て、トランス女性がより快適に暮らしていけることを願っています。
+        </p>
+      </ul>
     </div>
+    <% if user_signed_in? %>
+      <div class='question-btn'>
+        <span class='question-btn-text'>質問する</span>
+        <%= link_to new_question_path do %>
+          <%= image_tag 'Q.PNG' , size: '185x50' ,class: "question-btn-icon" %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
