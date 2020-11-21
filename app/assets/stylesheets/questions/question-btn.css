@@ -1,0 +1,22 @@
+.question-btn {
+  width: 120px;
+  background: #FF9CEC;
+  text-align: center;
+  border-radius: 50%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+}
+
+.question-btn-text {
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.question-btn-icon {
+  width: auto;
+}
