@@ -1,13 +1,15 @@
 <div class="question-list">
-  <h3>
-    質問タイトル：<%= link_to question.title.truncate(20), question_path(question.id) %>
-  </h3>
-  <div>
-    <%= question.text.truncate(40) %><%= link_to "続きを読む", question_path(question.id)%>
+  <div class="question-title">
+    <%= link_to question.title.truncate(20), question_path(question.id), class: "question" %>
   </div>
-  <div>
+  <div class="question-content">
+    <%= link_to "#{question.text.truncate(150)} 続きを読む", question_path(question.id), class: "question"%>
+  </div>
+  <div class="question-image">
     <% if question.image.present? %>
-      <div>画像あり</div>
+      <div class="image-presence">
+        画像あり<%= image_tag "camera.PNG", size: '30x30' %>
+      </div>
     <% end %>
   </div>
   <div class="posted-by">
