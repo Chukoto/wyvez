@@ -5,8 +5,7 @@
 
   <%# 質問一覧 %>
   <div class='question-contents'>
-    <h2 class='title'>みんなのお悩み</h2>
-    <ul class='unset'>  
+    <div class='title'>みんなのお悩み</div> 
     <%# 部分テンプレートで質問投稿一覧を表示する %>
     <%= render partial: 'question', collection: @questions %>
   </div>
