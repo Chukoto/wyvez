@@ -1,47 +1,56 @@
 <%= render "shared/header" %>
 
-<h1>お悩みボックス</h1>
+<div class='main'>
+  <div class='margin'>
 
-<h3>お悩みボックスでは、困っていることや解決したいことについて、悩める乙女同士で一緒にシェアしていきましょう！</h3>
+    <div class='question-form'>
+      <div class='title'>質問する</div>
+
+      <h3>困っていることや解決したいことについて、悩める乙女同士で一緒にシェアしていきましょう！</h3>
 
 
-<div class="question-main">
-  <h2 class="question-title">質問内容を教えてください</h2>
-  <%= form_with model: @question, url: question_path, method: :patch, local: true do |f| %>
+      <div class="question-main">
+        <%= form_with model: @question, url: question_path, method: :patch, local: true do |f| %>
 
-  <%= render 'shared/error_messages', model: f.object %>
+        <%= render 'shared/error_messages', model: f.object %>
 
-  <%# 質問カテゴリー %>
-  <div class="question-category">
-    質問カテゴリー
-    <span class="indispensable">必須</span>
+        <%# 質問カテゴリー %>
+        <div class="size-twenty-four">
+          質問カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"question-category"}) %>
+        
+        <%# 質問タイトル %>
+        <div class="size-twenty-four">
+          質問タイトル
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :title, class:"title-input", id:"title_id", placeholder:"質問タイトルを入力（必須 60文字まで)", maxlength:"60" %>
+
+        <%# 質問内容 %>
+        <div class="size-twenty-four">
+          質問内容
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :text, class:"text-text", id:"text_id", placeholder:"質問内容", rows: "5", cols: "59" %>
+
+        <%# 画像添付 %>
+        <div class="image-field">
+          <%= f.label :image, "質問に関する画像" %><br />
+          <%= f.file_field :image %>
+        </div>
+
+        <%# 送信ボタン %>
+        <div class="make-center">
+          <%= f.submit "質問を完了する", class:"post" %>
+        </div>
+        <% end %>
+
+        <div class="go-back-homepage">
+        <%=link_to "ホームへ戻る", root_path %>
+        </div>
+      </div>
+    </div>
   </div>
-  <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"question-category"}) %>
-  
-  <%# 質問タイトル %>
-  <div class="question-title">
-    質問タイトル
-    <span class="indispensable">必須</span>
-  </div>
-  <%= f.text_field :title, class:"title-input", id:"title_id", placeholder:"質問タイトルを入力（必須 60文字まで)", maxlength:"60" %>
-
-  <%# 質問内容 %>
-  <div class="question-text">
-    質問内容
-    <span class="indispensable">必須</span>
-  </div>
-  <%= f.text_area :text, class:"text-text", id:"text_id", placeholder:"質問内容", rows: "5", cols: "59" %>
-
-  <%# 画像添付 %>
-  <div class="image-field">
-    <%= f.label :image, "質問に関する画像" %><br />
-    <%= f.file_field :image %>
-  </div>
-
-  <%# 送信ボタン %>
-  <div class="question-submit-btn">
-    <%= f.submit "質問内容を更新する", class:"question-submit-btn" %>
-  </div>
-
-  <% end %>
 </div>
