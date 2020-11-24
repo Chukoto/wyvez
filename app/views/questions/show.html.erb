@@ -70,7 +70,7 @@
       <% if user_signed_in? %>
         <%= form_with(model: [@question, @comment], local: true) do |form| %>
           <%= form.text_area :text, placeholder: "コメントする", rows: "3", class: "comment" %>
-            <div class="make-post-center">
+            <div class="make-center">
               <%= form.submit "投稿", class: "post" %>
             </div>
         <% end %>
@@ -91,10 +91,6 @@
           <% end %>
         <% end %>
       <% end %>
-    </div>
-
-    <div class="go-back-homepage">
-    <%=link_to "ホームへ戻る", root_path %>
     </div>
   </div>
 </div>
