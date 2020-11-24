@@ -1,76 +1,100 @@
 <%= render "shared/header" %>
 
-<div class="user-nickname">
-<%= "#{@question.user.nickname}さんによる投稿" %>
-</div>
+<div class="main">
+  <div class="margin">
+    <div class="question-list">
+      <div class="question-show-top">
+        <div class="question-show-top-left">
+          質問カテゴリー
+          <div class="question-category-name">
+            <%= @question.category.name %>
+          </div>
+        </div>
 
-  <% if user_signed_in? && current_user.id == @question.user_id %>
-    <%= link_to '編集する', edit_question_path(@question.id), method: :get %>
-    <%= link_to '削除する', question_path(@question.id), method: :delete %>
-  <% end %>
-
-<b>
-  質問タイトル
-</b>
-<div>
-  <%= @question.title %>
-</div>
-
-<b>
-  質問カテゴリー
-</b>
-<div>
-  <%= @question.category.name %>
-</div>
-
-<b>
-  質問内容
-</b>
-<div>
-  <%= @question.text%>
-</div>
-
-<% if @question.image.present? %>
-<div>
-  画像
-</div>
-<%= image_tag @question.image.variant(resize: '200x200'), class: 'question-image' if @question.image.attached? %>
-<% end %>
-
-<%= render 'shared/error_messages', model: @comment %>
-
-<% if user_signed_in? %>
-
-  <% if Bookmark.find_by(user_id: current_user.id, question_id: @question.id) %>
-    <%= link_to("ブックマーク[★]", "/bookmarks/#{@question.id}/destroy", {method: "post"})%>
-  <% else %>
-    <%= link_to("ブックマーク[☆]", "/bookmarks/#{@question.id}/create", {method: "post"}) %>
-  <% end %>
-
-  <%= form_with(model: [@question, @comment], local: true) do |form| %>
-    <%= form.text_area :text, placeholder: "コメントする", rows: "5", cols: "59" %>
-      <div>
-        <%= form.submit "投稿" %>
+        <div class="question-show-top-right">
+          <div class="posted-by">
+            <% if @question.user.id == current_user.id %>
+              あなたの投稿
+            <% else %>
+              <%= link_to "#{@question.user.nickname}さん", profile_path(@question.user.id), class: "posted-by" %>
+            <% end %>
+          </div>
+          
+          <%#投稿者本人であれば編集と削除を、それ以外のユーザーはブックマークを表示%>
+          <div class="edit-destroy-bookmark">
+            <% if user_signed_in? && current_user.id == @question.user_id %>
+              <%= link_to '編集する', edit_question_path(@question.id), method: :get %>
+              <%= link_to '削除する', question_path(@question.id), method: :delete %>
+            <% else %>
+              <% if Bookmark.find_by(user_id: current_user.id, question_id: @question.id) %>
+                <%= link_to("ブックマーク[★]", "/bookmarks/#{@question.id}/destroy", {method: "post", class: "bookmark"}) %>
+              <% else %>
+                <%= link_to("ブックマーク[☆]", "/bookmarks/#{@question.id}/create", {method: "post", class: "bookmark"}) %>
+              <% end %>
+            <% end %>
+          </div>
+           <%#//投稿者本人であれば編集と削除を、それ以外のユーザーはブックマークを表示%>
+        </div>
       </div>
-  <% end %>
 
-  <% if @comments %>
-    <% @comments.each do |comment| %>
-      <p>
-        <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-        <%= comment.text %>
-        <%# 日本時間で表示する場合は必要なlocale用意してコメントアウト%>
-        <%#= simple_time(comment.created_at) %>
-        <%#// 日本時間で表示する場合は必要なlocale用意してコメントアウト%>
+      <div class="question-title">
+        <div class="title">
+          質問タイトル
+        </div>
+        <div>
+          <%= @question.title %>
+        </div>
+      </div>
 
-        <% if current_user.id == comment.user_id %>
-          <%= link_to '削除', question_comment_path(comment.question.id, comment.id), method: :delete %>
+      <div class="question-main">
+        <div class="text-title">
+          質問内容
+        </div>
+        <div class="question-text">
+          <%= @question.text%>
+        </div>
+
+        <% if @question.image.present? %>
+        <div>
+          画像
+        </div>
+        <%= image_tag @question.image.variant(resize: '200x200'), class: 'question-image' if @question.image.attached? %>
         <% end %>
-      </p>
-    <% end %>
-  <% end %>
-<% end %>
+      </div>
+    </div>
 
-<div class="go-back-homepage">
-<%=link_to "ホームへ戻る", root_path %>
+    <div class="container">
+
+      <%= render 'shared/error_messages', model: @comment %>
+      
+      <% if user_signed_in? %>
+        <%= form_with(model: [@question, @comment], local: true) do |form| %>
+          <%= form.text_area :text, placeholder: "コメントする", rows: "3", class: "comment" %>
+            <div class="make-post-center">
+              <%= form.submit "投稿", class: "post" %>
+            </div>
+        <% end %>
+
+        <% if @comments %>
+          <% @comments.each do |comment| %>
+            <p>
+              <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+              <%= comment.text %>
+              <%# 日本時間で表示する場合は必要なlocale用意してコメントアウト%>
+              <%#= simple_time(comment.created_at) %>
+              <%#// 日本時間で表示する場合は必要なlocale用意してコメントアウト%>
+
+              <% if current_user.id == comment.user_id %>
+                <%= link_to '削除', question_comment_path(comment.question.id, comment.id), method: :delete %>
+              <% end %>
+            </p>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="go-back-homepage">
+    <%=link_to "ホームへ戻る", root_path %>
+    </div>
+  </div>
 </div>
