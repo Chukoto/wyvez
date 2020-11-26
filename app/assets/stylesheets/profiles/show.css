@@ -2,7 +2,9 @@
   text-align: center;
 }
 
-.profile-new-edit-update-btn {
+/* 作成編集更新ボタン */
+
+.new-edit-update-btn {
   box-shadow: 0px 10px 14px -7px #b681bf;
 	background-color:#c581cf;
 	border-radius:6px;
@@ -19,20 +21,22 @@
 	text-shadow:0px 1px 0px #9b809f;
 }
 
-.profile-new-edit-update-btn a {
+.new-edit-update-btn a {
   text-decoration: none;
   color: white;
   display: block
 }
 
-.profile-new-edit-update-btn:hover {
+.new-edit-update-btn:hover {
   background-color:#d381df;
 }
 
-.profile-new-edit-update-btn:active {
+.new-edit-update-btn:active {
   position:relative;
 	top:2px;
 }
+
+/* //作成編集更新ボタン */
 
 .profile-content {
   display: flex;

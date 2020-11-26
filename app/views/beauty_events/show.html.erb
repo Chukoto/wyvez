@@ -1,51 +1,67 @@
 <%= render "shared/header" %>
 
-<h1>美容スケジュール</h1>
+<div class="margin">
+  <div class="title">
+    美容スケジュール
+  </div>
+  
+  <div class="new-edit-update-btn">
+    <%= link_to "美容スケジュールを作成する", new_beauty_event_path %>
+  </div>
 
-<div>
-  美容スケジュールを管理しましょう！
-</div>
-<div>
-  性転換女子に必要な、ホルモン注射・豊胸手術・声帯手術・性器手術<br>
-  美容整形や、エステ、マッサージ、ネイルなどのビューティーサロンなど、<br>
-  女性の美に欠かせない予定を、あなた専用のスケジュールにまとめましょう。
-</div>
+  <div>
+  </div>
 
-<div>
-  <%= link_to "美容スケジュールを作成する", new_beauty_event_path %>
-</div>
-
-<div>
-  <%= render "shared/map" %>
-</div>
-
+  <div class="beauties">
   <% @beauty_events.each do |beauty| %>
-  ----------------------------------------
-    <ul>
-      <div>
-        <%= "美容カテゴリ：#{beauty.beauty_cate.name}" %>
+    <div class="beauty">
+      <ul>
+        <div class="size-twenty-four">
+          美容カテゴリ
+        </div>
+        <div class="size-eighteen">
+          <%= "#{beauty.beauty_cate.name}" %>
+        </div>
+        <div class="size-twenty-four">
+          予約日時
+        </div>
+        <div class="size-eighteen">
+          <%= "#{beauty.started_at}"%>
+        </div>
+        <div class="size-twenty-four">
+          場所
+        </div>
+        <div class="size-eighteen">
+          <%= "#{beauty.place}" %>
+        </div>
+        <div class="size-twenty-four">
+          メモ
+        </div>
+        <div class="size-eighteen">
+          <%= "#{beauty.memo}" %>
+        </div>
+        <div class="size-twenty-four">
+          施術コスト
+        </div>
+        <div class="size-eighteen">
+          <%= "#{beauty.cost}" %>
+        </div>
+        <div class="size-twenty-four">
+          スケジュールの状態
+        </div>
+        <div class="size-eighteen">
+          <%= "#{beauty.status.name}" %>
+        </div>
+      </ul>
+      <div class="make-center">
+        <% if user_signed_in? && current_user.id == beauty.user_id %>
+          <%= link_to "編集する", edit_beauty_event_path(beauty.id), method: :get, class: "new-edit-update-btn"%>
+          <%= link_to "削除する", beauty_event_path(beauty.id), method: :delete, class: "destroy-btn" %>
+        <% end %>
       </div>
-      <div>
-        <%= "予約日時：#{beauty.started_at}"%>
-      </div>
-      <div>
-        <%= "場所：#{beauty.place}" %>
-      </div>
-      <div>
-        <%= "メモ：#{beauty.memo}" %>
-      </div>
-      <div>
-        <%= "施術コスト：#{beauty.cost}" %>
-      </div>
-      <div>
-        <%= "スケジュールの状態：#{beauty.status.name}" %>
-      </div>
-    </ul>
-
-    <div>
-    <% if user_signed_in? && current_user.id == beauty.user_id %>
-      <%= link_to "編集する", edit_beauty_event_path(beauty.id), method: :get %>
-      <%= link_to "削除する", beauty_event_path(beauty.id), method: :delete %>
-    <% end %>
     </div>
   <% end %>
+  </div>
+</div>
+
+<%= render "shared/map" %>

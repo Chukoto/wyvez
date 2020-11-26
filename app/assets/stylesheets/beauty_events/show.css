@@ -1,0 +1,47 @@
+.beauties {
+	flex-wrap: wrap;
+}
+
+.beauty {
+	margin: 20px 0px;
+	display: inline-block;
+	border-bottom: 1px solid #8D808F;
+	width: 44%;
+	height: auto;
+}
+
+/* 削除ボタン */
+
+.destroy-btn {
+  box-shadow: 0px 10px 14px -7px #b681bf;
+	background-color:#df3737;
+	border-radius:6px;
+	border:1px solid #bf2f2f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+  font-weight:bold;
+  margin: 10px;
+	padding:6px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #9F2727
+}
+
+.destroy-btn a {
+  text-decoration: none;
+  color: white;
+  display: block
+}
+
+.destroy-btn:hover {
+  background-color:#ff3f3f;
+}
+
+.destroy-btn:active {
+  position:relative;
+	top:2px;
+}
+
+/* /削除ボタン */
