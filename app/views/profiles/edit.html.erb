@@ -1,45 +1,49 @@
 <%= render "shared/header" %>
 
-  <div>
+<div class="margin">
+  <div class="title">
     あなたのプロフィール
   </div>
 
-
-<div>
-  <h2>プロフィールを編集してください</h2>
   <%= form_with model: @profile, url: profile_path, method: :patch, local: true do |f| %>
 
-  <%= render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
 
-  <div class="image-field">
-    <%= f.label :image, "プロフィール画像" %><br />
-    <%= f.file_field :image %>
-  </div>
+    <div class="select-image">
+      <div class="size-eighteen">
+        <%= f.label :image, "プロフィール画像" %><br />
+        <%= f.file_field :image %>
+      </div>
+    </div>
 
-  <div class="trans-experience">
-    <h4>性転換歴</h4>
-  </div>
-  <div>
-    <%= f.collection_select(:trans_exp_id, TransExp.all, :id, :name, {}, {class:"select-box", id:"trans-experience"}) %>
-  </div>
+    <div class="size-eighteen">
+      性転換歴
+    </div>
+    <div>
+      <%= f.collection_select(:trans_exp_id, TransExp.all, :id, :name, {}, {class:"select-box", id:"trans-experience"}) %>
+    </div>
 
-  <div class="papa-experience">
-    <h4>パパ活歴</h4>
-  </div>
-  <div>
-    <%= f.collection_select(:papa_exp_id, PapaExp.all, :id, :name, {}, {class:"select-box", id:"papa-experience"}) %>
-  </div>
-    
+    <div class="size-eighteen">
+      パパ活歴
+    </div>
+    <div>
+      <%= f.collection_select(:papa_exp_id, PapaExp.all, :id, :name, {}, {class:"select-box", id:"papa-experience"}) %>
+    </div>
+      
 
-  <h4>プロフィール</h4>
-  <div>
-      <%= f.text_area :text, class:"text-text", id:"text_id", placeholder:"プロフィールを入力してください", rows: "13", cols: "70" %>
-  </div>
+    <div class="size-eighteen">
+      プロフィール
+    </div>
+    <div>
+        <%= f.text_area :text, class:"text-text", id:"text_id", placeholder:"プロフィールを入力してください", rows: "5" %>
+    </div>
 
-  <%= f.submit "更新する" ,class:"edit-btn" %>
+      <%= f.submit "更新する", class: "profile-new-edit-update-btn" %>
   <% end %>
+
+  <div class="go-back-homepage">
+    <%=link_to "ホームへ戻る", root_path %>
+  </div>
 </div>
 
-<div class="go-back-homepage">
-  <%=link_to "ホームへ戻る", root_path %>
-</div>
+<%= render "shared/footer" %>
