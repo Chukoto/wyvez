@@ -1,48 +1,50 @@
-<h2>地図</h2>
-<div>必要に応じて場所を確認しましょう</div>
+<div class="google-map">
+  <h2>地図</h2>
+  <div>必要に応じて場所を確認しましょう</div>
 
-<input id="address" type="textbox" value="">
+  <input id="address" type="textbox" value="">
 
-<input type="button" value="検索する" onclick="codeAddress()">
-<div id='map'>
+  <input type="button" value="検索する" onclick="codeAddress()">
+  <div id='map'>
+  </div>
+
+  <style>
+  #map{
+     height: 200px;
+     border: 1px solid #c481cf;
+  }
+  </style>
+
+  <script>
+
+  let map
+  let geocoder
+
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.680, lng: 139.767},
+    zoom: 8
+    });
+  }
+
+  function codeAddress(){
+    let inputAddress = document.getElementById('address').value;
+
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 </div>
-
-<style>
-#map{
-  height: 400px;
-  width: 60%;
-}
-</style>
-
-<script>
-
-let map
-let geocoder
-
-function initMap(){
-  geocoder = new google.maps.Geocoder()
-
-  map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 35.680, lng: 139.767},
-  zoom: 8
-  });
-}
-
-function codeAddress(){
-  let inputAddress = document.getElementById('address').value;
-
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-      map.setCenter(results[0].geometry.location);
-
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
