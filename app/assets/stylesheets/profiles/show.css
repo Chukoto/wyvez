@@ -1,0 +1,44 @@
+.profile-new-edit {
+  text-align: center;
+}
+
+.profile-new-edit-update-btn {
+  box-shadow: 0px 10px 14px -7px #b681bf;
+	background-color:#c581cf;
+	border-radius:6px;
+	border:1px solid #a980af;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+  font-weight:bold;
+  margin: 10px;
+	padding:6px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #9b809f;
+}
+
+.profile-new-edit-update-btn a {
+  text-decoration: none;
+  color: white;
+  display: block
+}
+
+.profile-new-edit-update-btn:hover {
+  background-color:#d381df;
+}
+
+.profile-new-edit-update-btn:active {
+  position:relative;
+	top:2px;
+}
+
+.profile-content {
+  display: flex;
+  align-items: center;
+}
+
+.profile-right {
+  margin-left: 80px;
+}

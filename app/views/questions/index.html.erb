@@ -1,7 +1,6 @@
 <%= render "shared/header" %>
 
-<div class='main'>
-  <div class='margin'>
+<div class='margin'>
 
   <%# 質問一覧 %>
   <div class='question-contents'>
@@ -9,6 +8,8 @@
     <%# 部分テンプレートで質問投稿一覧を表示する %>
     <%= render partial: 'question', collection: @questions %>
   </div>
-</div>
 
+</div>
 <%= render "shared/question-btn" %>
+
+<%= render "shared/footer" %>

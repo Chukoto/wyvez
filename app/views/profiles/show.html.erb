@@ -1,61 +1,80 @@
 <%= render "shared/header" %>
 
-<% if user_signed_in? && current_user.id == @user.id %>
-  <div>
-    あなたのプロフィール
-  </div>
-<% else %>
-  <div>
-    <%= "#{@user.nickname}さんのプロフィール" %>
-  </div>
-<% end %>
-
-<% if user_signed_in? && current_user.id == @user.id && @profile == nil %>
-  <div>
-    <%= link_to '作成する',  new_profile_path, method: :get %>
-  </div>
-<% elsif user_signed_in? && current_user.id == @user.id && @profile != nil %>
-  <div>
-    <%= link_to '編集する', edit_profile_path, method: :get %>
-  </div>
-<% end %>
-
-
-<%# プロフィールがない場合 %>
-<% if @profile == nil %>
-  <h4>プロフィール画像</h4>
-  <div>登録されていません</div>
-
-  <h4>性転換歴</h4>
-  <div>登録されていません</div>
-
-  <h4>パパ活歴</h4>
-  <div>登録されていません</div>
-
-  <h4>プロフィール</h4>
-  <div>プロフィールがありません</div>
-<%#// プロフィールがない場合 %>
-<% else %>
-<%# プロフィールがある場合 %>
-  <% if @profile.image.present? %>
-    <h4>プロフィール画像</h4>
-    <%= image_tag @profile.image.variant(resize: '200x200'), class: 'profile-image' if @profile.image.attached? %>
+<div class="margin">
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <div class="title">
+      あなたのプロフィール
+    </div>
   <% else %>
-    <h4>プロフィール画像</h4>
-    <div>登録されていません</div>
+    <div class="title">
+      <%= "#{@user.nickname}さんのプロフィール" %>
+    </div>
   <% end %>
 
-  <h4>性転換歴</h4>
-  <div><%= @profile.trans_exp.name %></div>
+  <div class="profile-new-edit">
+    <% if user_signed_in? && current_user.id == @user.id && @profile == nil %>
+      <div class="profile-new-edit-update-btn">
+        <%= link_to '作成する',  new_profile_path, method: :get %>
+      </div>
+    <% elsif user_signed_in? && current_user.id == @user.id && @profile != nil %>
+      <div class="profile-new-edit-update-btn">
+        <%= link_to '編集する', edit_profile_path, method: :get %>
+      </div>
+    <% end %>
+  </div>
 
-  <h4>パパ活歴</h4>
-  <div><%= @profile.papa_exp.name %></div>
 
-  <h4>プロフィール</h4>
-  <div><%= @profile.text %></div>
-<% end %>
-<%#// プロフィールがある場合 %>
+  <%# プロフィールがない場合 %>
+  <% if @profile == nil %>
+    <div class="profile-top">
+      <div class="profile-top-left">
+        <div class="size-twenty-four">プロフィール画像</div>
+        <div class="size-eighteen">登録されていません</div>
+      </div>
+
+      <div class="profile-top-right">
+        <div class="size-twenty-four">性転換歴</div>
+        <div class="size-eighteen">登録されていません</div>
+        <div class="size-twenty-four">パパ活歴</div>
+        <div class="size-eighteen">登録されていません</div>
+      </div>
+    </div>
+
+    <div class="profile-bottom">
+      <div class="size-twenty-four">プロフィール</div>
+      <div class="size-eighteen">プロフィールがありません</div>
+    </div>
+    <%#// プロフィールがない場合 %>
+    <%# プロフィールがある場合 %>
+  <% else %>
+    <div class="profile-content">
+      <div class="profile-left">
+        <% if @profile.image.present? %>
+          <div class="size-twenty-four">プロフィール画像</div>
+          <%= image_tag @profile.image.variant(resize: '350x350'), class: 'profile-image' if @profile.image.attached? %>
+        <% else %>
+          <div class="size-twenty-four">プロフィール画像</div>
+          <div class="size-eighteen">登録されていません</div>
+        <% end %>
+      </div>
+
+      <div class="profile-right">
+        <div class="size-twenty-four">性転換歴</div>
+        <div class="size-eighteen"><%= @profile.trans_exp.name %></div>
+
+        <div class="size-twenty-four">パパ活歴</div>
+        <div class="size-eighteen"><%= @profile.papa_exp.name %></div>
+
+        <div class="size-twenty-four">プロフィール</div>
+        <div class="size-eighteen"><%= @profile.text %></div>
+      </div>
+    </div>
+  <% end %>
+  <%#// プロフィールがある場合 %>
 
   <div class="go-back-homepage">
     <%=link_to "ホームへ戻る", root_path %>
   </div>
+</div>
+
+<%= render "shared/footer" %>
