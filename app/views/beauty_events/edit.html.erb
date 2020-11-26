@@ -1,63 +1,64 @@
 <%= render "shared/header" %>
 
-<h1>美容スケジュール</h1>
+<div class="margin">
+  <div class="title">
+    美容スケジュール
+  </div>
 
-<div>
-  美容スケジュールを編集しましょう！
+  <div class="beauty-event-main">
+    <%= form_with model: @beauty_event, url: beauty_event_path, method: :patch, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <%# beauty_cate_id %>
+    <div class="size-twenty-four">
+    美容カテゴリ
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:beauty_cate_id, BeautyCate.all, :id, :name, {}, {class:"select-box", id:"beauty-cate"}) %>
+
+    <%# started_at %>
+    <div>
+      <%= f.label :started_at, '予約日', class: 'control-label' %>
+      <%= f.date_field :started_at, class: 'form-control' %>
+      <span class="indispensable">必須</span>
+      <%= f.label :started_at, '予約時間', class: 'control-label' %>
+      <%= f.time_field :started_at, class: 'form-control' %>
+      <span class="indispensable">必須</span>
+    </div>
+
+    <%# place %>
+    <div class="size-eighteen">
+      場所 
+    </div>
+    <%= f.text_field :place, class:"text-text", id:"place_id", placeholder:"場所の名前や住所（必須 80文字まで）", maxlength:"80" %>
+
+    <%# memo %>
+    <div class="papa_event-place">
+      メモ
+    </div>
+    <%= f.text_area :place, class:"text-text", id:"memo_id", placeholder:"必要に応じてメモを記入してください", rows:"5" %>
+
+    <%# cost %>
+    <div class="papa_event-name">
+      施術コスト（支払後記入）
+    </div>
+    <%= f.text_field :reward, class:"cost-input", id:"cost_id", placeholder:"半角数字で記入" %>
+
+    <%# status_id %>
+    <div>
+    スケジュールの状態
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"status-select"}) %>
+
+    <%# 送信ボタン %>
+    <div class="question-submit-btn">
+      <%= f.submit "更新する", class:"new-edit-update-btn" %>
+    </div>
+
+    <% end %>
+  </div>
 </div>
 
-<div class="beauty_event-main">
-  <h2 class="beauty_event-info">美容スケジュール</h2>
-  <%= form_with model: @beauty_event, url: beauty_event_path, method: :patch, local: true do |f| %>
-
-  <%= render 'shared/error_messages', model: f.object %>
-
-  <%# beauty_cate_id %>
-  <div>
-  美容カテゴリ
-    <span class="indispensable">必須</span>
-  </div>
-  <%= f.collection_select(:beauty_cate_id, BeautyCate.all, :id, :name, {}, {class:"beauty_cate-select"}) %>
-
-  <%# started_at %>
-  <div>
-  <%= f.label :started_at, '予約日', class: 'control-label' %>
-  <%= f.date_field :started_at, class: 'form-control' %>
-  <span class="indispensable">必須</span>
-  <%= f.label :started_at, '予約時間', class: 'control-label' %>
-  <%= f.time_field :started_at, class: 'form-control' %>
-  <span class="indispensable">必須</span>
-  </div>
-
-  <%# place %>
-  <div class="papa_event-place">
-    場所 
-  </div>
-  <%= f.text_field :place, class:"place-input", id:"place_id", placeholder:"場所の名前や住所（必須 82文字まで）", maxlength:"82" %>
-
-  <%# memo %>
-  <div class="papa_event-place">
-    メモ
-  </div>
-  <%= f.text_area :place, class:"memo-input", id:"memo_id", placeholder:"必要に応じてメモを記入してください", rows:"5", cols:"80" %>
-
-  <%# cost %>
-  <div class="papa_event-name">
-    施術コスト（支払後記入）
-  </div>
-  <%= f.text_field :reward, class:"cost-input", id:"cost_id", placeholder:"半角数字で記入" %>
-
-  <%# status_id %>
-  <div>
-  スケジュールの状態
-    <span class="indispensable">必須</span>
-  </div>
-  <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"status-select"}) %>
-
-  <%# 送信ボタン %>
-  <div class="question-submit-btn">
-    <%= f.submit "スケジュールを更新する", class:"papa_event-submit-btn" %>
-  </div>
-
-  <% end %>
-</div>
+<%= render "shared/footer" %>
