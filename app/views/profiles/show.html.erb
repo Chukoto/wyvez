@@ -13,11 +13,11 @@
 
   <div class="profile-new-edit">
     <% if user_signed_in? && current_user.id == @user.id && @profile == nil %>
-      <div class="profile-new-edit-update-btn">
+      <div class="new-edit-update-btn">
         <%= link_to '作成する',  new_profile_path, method: :get %>
       </div>
     <% elsif user_signed_in? && current_user.id == @user.id && @profile != nil %>
-      <div class="profile-new-edit-update-btn">
+      <div class="new-edit-update-btn">
         <%= link_to '編集する', edit_profile_path, method: :get %>
       </div>
     <% end %>
