@@ -2,7 +2,7 @@
   <div class="question-list-title">
     <%= link_to question.title.truncate(20), question_path(question.id), class: "question" %>
   </div>
-  <div class="question-content">
+  <div class="size-eighteen">
     <%= link_to "#{question.text.truncate(150)} 続きを読む", question_path(question.id), class: "question"%>
   </div>
   <div class="question-image">
@@ -13,7 +13,7 @@
     <% end %>
   </div>
   <div class="posted-by">
-    <% if question.user.id == current_user.id %>
+    <% if question.user == current_user %>
       <%= link_to "あなた", profile_path(current_user.id), class: "posted-by" %>
     <% else %>
       <%= link_to "#{question.user.nickname}さん", profile_path(question.user.id), class: "posted-by" %>
