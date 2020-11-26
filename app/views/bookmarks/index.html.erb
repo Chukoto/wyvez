@@ -1,26 +1,29 @@
 <%= render "shared/header" %>
 
-<div>
-  ブックマーク一覧
-</div>
+<div class="margin">
+  <div class="title">
+    ブックマークリスト
+  </div>
 
-<% @bookmarks.each  do |bookmark| %>
-  <div>
-    <%= "#{bookmark.question.user.nickname}さんによる投稿" %>
-  </div>
-  <div>
-    <%= link_to "質問タイトル：#{bookmark.question.title.truncate(20)}", question_path(bookmark.question.id) %>
-  </div>
-  <div>
-    <%= bookmark.question.text.truncate(40) %><%= link_to "続きを読む", question_path(bookmark.question.id)%>
-  </div>
-  <div>
-    <%= link_to "#{bookmark.question.user.nickname}さんのプロフィールを見る", profile_path(bookmark.question.user) %>
-  </div>
-<% end %>
-
-<div class="go-back-homepage">
-  <%=link_to "ホームへ戻る", root_path %>
+  <% @bookmarks.each  do |bookmark| %>
+    <div class="bookmark">
+      <div class="question-list">
+        <div class="question-list-title">
+          <%= link_to "#{bookmark.question.title.truncate(20)}", question_path(bookmark.question.id), class: "question" %>
+        </div>
+        <div class="question-content">
+          <div class="size-eighteen">
+            <%= bookmark.question.text.truncate(150) %><%= link_to " 続きを読む", question_path(bookmark.question.id), class: "question"%>
+          </div>
+        </div>
+        <div class="posted-by">
+          <%= link_to "#{bookmark.question.user.nickname}さん", profile_path(bookmark.question.user), class: "posted-by" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <%= render "shared/question-btn" %>
+
+<%= render "shared/footer" %>

@@ -26,9 +26,9 @@
             <%= link_to '削除する', question_path(@question.id), method: :delete %>
           <% elsif user_signed_in? && current_user.id != @question.user_id %>
             <% if Bookmark.find_by(user_id: current_user.id, question_id: @question.id) %>
-              <%= link_to("ブックマーク[★]", "/bookmarks/#{@question.id}/destroy", {method: "post", class: "bookmark"}) %>
+              <%= link_to("ブックマーク[★]", "/bookmarks/#{@question.id}/destroy", {method: "post", class: "bookmark-btn"}) %>
             <% else %>
-              <%= link_to("ブックマーク[☆]", "/bookmarks/#{@question.id}/create", {method: "post", class: "bookmark"}) %>
+              <%= link_to("ブックマーク[☆]", "/bookmarks/#{@question.id}/create", {method: "post", class: "bookmark-btn"}) %>
             <% end %>
           <% end %>
         </div>
