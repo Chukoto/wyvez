@@ -2,8 +2,10 @@
   <div class="question-list-title">
     <%= link_to question.title.truncate(20), question_path(question.id), class: "question" %>
   </div>
-  <div class="size-eighteen">
-    <%= link_to "#{question.text.truncate(150)} 続きを読む", question_path(question.id), class: "question"%>
+  <div class="question-content">
+    <div class="size-eighteen">
+      <%= link_to "#{question.text.truncate(150)} 続きを読む", question_path(question.id), class: "question"%>
+    </div>
   </div>
   <div class="question-image">
     <% if question.image.present? %>
