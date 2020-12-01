@@ -1,57 +1,87 @@
 <%= render "shared/header" %>
 
-<h1>パパ活スケジュール</h1>
+<div class="margin">
+  <div class="title">
+    パパ活スケジュール
+  </div>
 
-<div>
-  パパ活スケジュールを管理しましょう
-</div>
+  <div class="new-edit-update-btn">
+    <%= link_to "パパ活スケジュールを作成する", new_papa_papa_event_path %>
+  </div>
 
-<div>
-  <%= link_to "パパ活スケジュールを作成する", new_papa_papa_event_path %>
-</div>
+  <div>
+    <%= render "shared/map" %>
+  </div>
 
-<div>
-  <%= render "shared/map" %>
-</div>
-
-  <% @papa_events.each do |event| %>
-  ----------------------------------------
-    <ul>
-      <div>
-        <%= "パパの名前：#{event.papa.name}" %>
+  <div class="events">
+    <% @papa_events.each do |event| %>
+      <div class="event">
+        <div class="make-center">
+        <div class="size-twenty-four">
+          <%= "#{event.papa.name}さん" %>
+        </div>
+        </div>
+        <div class="size-twenty-two">
+          アプリ
+        </div>
+        <div class="size-sixteen">
+          <%= "#{event.papa.app_name}" %>
+        </div>
+        <div class="size-twenty-two">
+          開始日
+        </div>
+        <div class="size-sixteen">
+          <%= "#{event.started_at}"%>
+        </div>
+        <div class="size-twenty-two">
+          終了日
+        </div>
+        <div class="size-sixteen">
+          <%= "#{event.finished_at}" %>
+        </div>
+        <div class="size-twenty-two">
+          やること
+        </div>
+        <div class="six-teen">
+          <%= "#{event.do_what.name}" %>
+        </div>
+        <div class="size-twenty-two">
+          todo
+        </div>
+        <div class="size-sixteen">
+          <%= "#{event.todo}" %>
+        </div>
+        <div class="size-twenty-two">
+          場所
+        </div>
+        <div class="size-sixteen">
+          <%= "#{event.place}" %>
+        </div>
+        <div class="size-twenty-two">
+          見込み報酬額
+        </div>
+        <div class="size-sixteen">
+          <%= "#{event.expected_reward}" %>
+        </div>
+        <div class="size-twenty-two">
+          報酬
+        </div>
+        <div class="size-sixteen">
+          <%= "#{event.reward}" %>
+        </div>
+        <div class="size-twenty-two">
+          スケジュールの状態
+        </div>
+        <div>
+          <%= "#{event.status.name}" %>
+        </div>
+        <div class="make-center">
+          <% if user_signed_in? && current_user.id == event.user_id %>
+            <%= link_to "編集する", edit_papa_papa_event_path(event.papa_id, event.id), method: :get, class: "new-edit-update-btn" %>
+            <%= link_to "削除する", papa_papa_event_path(event.papa_id, event.id), method: :delete, class: "destroy-btn" %>
+          <% end %>
+        </div>
       </div>
-      <div>
-        <%= "アプリ：#{event.papa.app_name}" %>
-      </div>
-      <div>
-        <%= "開始日：#{event.started_at}"%>
-      </div>
-      <div>
-        <%= "終了日：#{event.finished_at}" %>
-      </div>
-      <div>
-        <%= "やること：#{event.do_what.name}" %>
-      </div>
-      <div>
-        <%= "todo：#{event.todo}" %>
-      </div>
-      <div>
-        <%= "場所：#{event.place}" %>
-      </div>
-      <div>
-        <%= "見込み報酬額：#{event.expected_reward}" %>
-      </div>
-      <div>
-        <%= "報酬：#{event.reward}" %>
-      </div>
-      <div>
-        <%= "スケジュールの状態：#{event.status.name}" %>
-      </div>
-    </ul>
-    <div>
-    <% if user_signed_in? && current_user.id == event.user_id %>
-      <%= link_to "編集する", edit_papa_papa_event_path(event.papa_id, event.id), method: :get %>
-      <%= link_to "削除する", papa_papa_event_path(event.papa_id, event.id), method: :delete %>
     <% end %>
-    </div>
-  <% end %>
+  </div>
+</div>
