@@ -16,40 +16,40 @@
   <% @beauty_events.each do |beauty| %>
     <div class="beauty">
       <ul>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           美容カテゴリ
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.beauty_cate.name}" %>
         </div>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           予約日時
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.started_at}"%>
         </div>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           場所
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.place}" %>
         </div>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           メモ
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.memo}" %>
         </div>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           施術コスト
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.cost}" %>
         </div>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           スケジュールの状態
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.status.name}" %>
         </div>
       </ul>
@@ -65,3 +65,5 @@
 </div>
 
 <%= render "shared/map" %>
+
+<%= render "shared/footer" %>
