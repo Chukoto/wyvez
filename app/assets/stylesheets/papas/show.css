@@ -1,0 +1,48 @@
+.papas {
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.papa {
+	margin: 20px 0px;
+	display: inline-block;
+	border-bottom: 1px solid #8D808F;
+	width: 75%;
+	height: auto;
+}
+
+/* 削除ボタン */
+
+.show-papa-event-btn {
+  box-shadow: 0px 10px 14px -7px #466841;
+	background-color:#7BB571;
+	border-radius:6px;
+	border:1px solid #699B61;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+  font-weight:bold;
+  margin: 10px;
+	padding:6px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #588151
+}
+
+.show-papa-event-btn a {
+  text-decoration: none;
+  color: white;
+  display: block
+}
+
+.show-papa-event-btn:hover {
+  background-color:#8CCF81;
+}
+
+.show-papa-event-btn:active {
+  position:relative;
+	top:2px;
+}
+
+/* /削除ボタン */
