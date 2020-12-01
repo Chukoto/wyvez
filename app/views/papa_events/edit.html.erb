@@ -1,14 +1,11 @@
 <%= render "shared/header" %>
 
-<h1>パパ活スケジュールを編集しましょう</h1>
 
-<h3>パパ活のスケジュール情報を編集してください！</h3>
+<div class="margin">
+  <div class="title">パパ活スケジュール</div>
+  <%= form_with(model:[@papa_event], url: papa_papa_event_path, method: :patch, local: true) do |f| %>
 
-<div class="papa_event-main">
-  <h2 class="papa_event-info">パパ活スケジュール</h2>
-<%= form_with(model:[@papa_event], url: papa_papa_event_path, method: :patch, local: true) do |f| %>
-
-<%= render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
 
   <%# started_at %>
   <div>
@@ -35,19 +32,19 @@
     やること
     <span class="indispensable">必須</span>
   </div>
-  <%= f.collection_select(:do_what_id, DoWhat.all, :id, :name, {}, {class:"do_what-select"}) %>
+  <%= f.collection_select(:do_what_id, DoWhat.all, :id, :name, {}, {class:"select-box"}) %>
 
   <%# todo %>
   <div class="papa_event-todo">
     todo
   </div>
-  <%= f.text_area :todo, class:"todo-input", id:"todo_id", placeholder:"実行すべき行動をメモを記入してください", rows: "10", cols: "80" %>
+  <%= f.text_area :todo, class:"text-text", id:"todo_id", placeholder:"実行すべき行動をメモを記入してください", rows: "10", cols: "80" %>
 
   <%# place %>
   <div class="papa_event-place">
     場所 
   </div>
-  <%= f.text_field :place, class:"place-input", id:"place_id", placeholder:"場所の名前や住所（必須 82文字まで）", maxlength:"82" %>
+  <%= f.text_field :place, class:"text-text", id:"place_id", placeholder:"場所の名前や住所（必須 82文字まで）", maxlength:"82" %>
   
   <%# expected_reward %>
   <div class="papa_event-expected_reward">
@@ -67,11 +64,11 @@
   スケジュールの状態
     <span class="indispensable">必須</span>
   </div>
-  <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"status-select"}) %>
+  <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"select-box"}) %>
 
   <%# 送信ボタン %>
   <div class="question-submit-btn">
-    <%= f.submit "スケジュールを更新する", class:"papa-submit-btn" %>
+    <%= f.submit "更新する", class:"new-edit-update-btn" %>
   </div>
 
   <% end %>
