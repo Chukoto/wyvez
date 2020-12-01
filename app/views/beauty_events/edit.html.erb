@@ -37,20 +37,20 @@
     <div class="papa_event-place">
       メモ
     </div>
-    <%= f.text_area :place, class:"text-text", id:"memo_id", placeholder:"必要に応じてメモを記入してください", rows:"5" %>
+    <%= f.text_area :memo, class:"text-text", id:"memo_id", placeholder:"必要に応じてメモを記入してください", rows:"5" %>
 
     <%# cost %>
     <div class="papa_event-name">
       施術コスト（支払後記入）
     </div>
-    <%= f.text_field :reward, class:"cost-input", id:"cost_id", placeholder:"半角数字で記入" %>
+    <%= f.text_field :cost, class:"cost-input", id:"cost_id", placeholder:"半角数字で記入" %>
 
     <%# status_id %>
     <div>
     スケジュールの状態
       <span class="indispensable">必須</span>
     </div>
-    <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"status-select"}) %>
+    <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"select-box"}) %>
 
     <%# 送信ボタン %>
     <div class="question-submit-btn">

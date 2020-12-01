@@ -1,48 +1,59 @@
 <%= render "shared/header" %>
 
-<h1>パパリスト</h1>
+<div class="margin">
+  <div class="title">
+    パパリスト
+  </div>
 
-<div>
-  あなたが担当するパパ達を管理しましょう！パパを追加することで、パパごとにスケジュール管理ができる様になります。
-</div>
+  <div>
+    <%= link_to "パパを追加する", new_papa_path, class: "new-edit-update-btn" %>
+  </div>
 
-<div>
-  <%= link_to "パパを追加する", new_papa_path %>
-</div>
+  <div class="papas">
+    <% @papas.each do |papa| %>
+      <div class="papa">
+        <div class="profile-content">
+          <div class="profile-left">
+            <% if papa.image.present? %>
+              <%= image_tag papa.image.variant(resize: '265x265') %>
+            <% else %>
+              <div class="size-twenty-four">
+                パパの画像がありません
+              </div>
+            <% end %>
+          </div>
+          <div class="profile-right">
+            <div class="size-twenty-four">
+              <%= "#{papa.name}さん"%>
+            </div>
+            <div class="size-eighteen">
+              <%= "年齢：#{papa.age.name}" %>
+            </div>
+            <div class="size-eighteen">
+              <%= "婚歴：#{papa.marriage.name}" %>
+            </div>
+            <div class="size-eighteen">
+              <%= "子ども：#{papa.child.name}" %>
+            </div>
+            <div class="size-eighteen">
+              <%= "アプリ：#{papa.app_name}" %>
+            </div>
+            <div class="size-eighteen">
+              <%= "メモ：#{papa.memo}" %>
+            </div>
+          </div>
+        </div>
 
-  <% @papas.each do |papa| %>
-  ----------------------------------------
-    <ul>
-      <div>
-        <% if papa.image.present? %>
-          <%= image_tag papa.image.variant(resize: '150x150') %>
+        <div>
+        <% if user_signed_in? && current_user.id == papa.user_id %>
+          <%= link_to "#{papa.name}さんとのパパ活スケジュールを見る", papa_papa_event_path(papa.id), class: "show-papa-event-btn" %>
+          <%= link_to "編集する", edit_papa_path(papa.id), method: :get, method: :get, class: "new-edit-update-btn" %>
+          <%= link_to "削除する", papa_path(papa.id), method: :delete, class: "destroy-btn" %>
         <% end %>
+        </div>
       </div>
-      <div>
-        <%= "名前：#{papa.name}さん"%>
-      </div>
-      <div>
-        <%= "年齢：#{papa.age.name}" %>
-      </div>
-      <div>
-        <%= "婚歴：#{papa.marriage.name}" %>
-      </div>
-      <div>
-        <%= "子ども：#{papa.child.name}" %>
-      </div>
-      <div>
-        <%= "アプリ：#{papa.app_name}" %>
-      </div>
-      <div>
-        <%= "メモ：#{papa.memo}" %>
-      </div>
-    </ul>
-
-    <div>
-    <% if user_signed_in? && current_user.id == papa.user_id %>
-      <%= link_to "編集する", edit_papa_path(papa.id), method: :get %>
-      <%= link_to "削除する", papa_path(papa.id), method: :delete %>
-      <%= link_to "#{papa.name}さんとのパパ活スケジュールを見る", papa_papa_event_path(papa.id) %>
     <% end %>
-    </div>
-  <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

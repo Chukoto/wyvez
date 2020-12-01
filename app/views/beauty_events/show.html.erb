@@ -12,56 +12,56 @@
   <div>
   </div>
 
-  <div class="beauties">
-  <% @beauty_events.each do |beauty| %>
-    <div class="beauty">
-      <ul>
-        <div class="size-twenty-four">
+  <div class="events">
+    <% @beauty_events.each do |beauty| %>
+      <div class="event">
+        <div class="size-twenty-two">
           美容カテゴリ
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.beauty_cate.name}" %>
         </div>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           予約日時
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.started_at}"%>
         </div>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           場所
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.place}" %>
         </div>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           メモ
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.memo}" %>
         </div>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           施術コスト
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.cost}" %>
         </div>
-        <div class="size-twenty-four">
+        <div class="size-twenty-two">
           スケジュールの状態
         </div>
-        <div class="size-eighteen">
+        <div class="size-sixteen">
           <%= "#{beauty.status.name}" %>
         </div>
-      </ul>
-      <div class="make-center">
-        <% if user_signed_in? && current_user.id == beauty.user_id %>
-          <%= link_to "編集する", edit_beauty_event_path(beauty.id), method: :get, class: "new-edit-update-btn"%>
-          <%= link_to "削除する", beauty_event_path(beauty.id), method: :delete, class: "destroy-btn" %>
-        <% end %>
+        <div class="make-center">
+          <% if user_signed_in? && current_user.id == beauty.user_id %>
+            <%= link_to "編集する", edit_beauty_event_path(beauty.id), method: :get, class: "new-edit-update-btn"%>
+            <%= link_to "削除する", beauty_event_path(beauty.id), method: :delete, class: "destroy-btn" %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
 
 <%= render "shared/map" %>
+
+<%= render "shared/footer" %>
