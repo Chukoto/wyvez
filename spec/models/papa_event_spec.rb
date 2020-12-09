@@ -25,9 +25,9 @@ describe PapaEvent do
       end
 
       it 'status_idが0では登録できない' do
-        @papa_event.do_what_id = 0
+        @papa_event.status_id = 0
         @papa_event.valid?
-        expect(@papa_event.errors.full_messages).to include "Do what must be other than 0"
+        expect(@papa_event.errors.full_messages).to include "Status must be other than 0"
       end
 
       it 'expected_rewardが空では登録できない' do
