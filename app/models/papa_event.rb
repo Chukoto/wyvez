@@ -10,13 +10,13 @@ class PapaEvent < ApplicationRecord
     validates :finished_at
     validates :todo
     validates :place
-    validates :reward, format: { /\A[0-9]+\z/ }
+    validates :reward, format: { with: /\A[0-9]+\z/ }
   end
 
   with_options presence: true do
     validates :started_at
     validates :do_what_id, numericality: { other_than: 0 }
     validates :status_id, numericality: { other_than: 0 }
-    validates :expected_reward, format: { /\A[0-9]+\z/ }
+    validates :expected_reward, format: { with: /\A[0-9]+\z/ }
   end
 end
