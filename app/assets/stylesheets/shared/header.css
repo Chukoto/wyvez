@@ -70,11 +70,20 @@
   margin: auto;
 }
 
+.guest-image {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 300px;
+  margin: auto;
+}
+
 .btn-group .button {
   background-color: #c481cf;
   border: none;
   color: #4b4b4b;
-  padding: 30px 20px;
+  padding: 30px 14px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

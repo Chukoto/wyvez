@@ -21,6 +21,10 @@
             <div class='user-image'>
               <%= image_tag current_user.profile.image.variant(resize: '80x80'), class: "image"  %>
             </div>
+          <% else %>
+            <div class='guest-image'>
+              <%= image_tag 'guest.PNG', class: 'hoge' %>
+            </div>
           <% end %>
 
           <ul class='user-menu'>
