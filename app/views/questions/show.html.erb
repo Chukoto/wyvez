@@ -78,7 +78,7 @@
               <% if current_user.id == comment.user_id %>
                 <%= link_to '削除', question_comment_path(comment.question.id, comment.id), method: :delete %>
               <% end %>
-              
+
             </p>
           <% end %>
         <% end %>
@@ -87,4 +87,4 @@
   <% end %>
 </div>
 
-<%= render "shared/footer" %>
+<%= render "shared/second_footer" %>
