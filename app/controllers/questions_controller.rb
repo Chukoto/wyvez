@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: [:home, :index, :show]
-  before_action :specified_question, except: [:index, :new, :create]
+  before_action :specified_question, only: [:show, :edit, :update, :destroy]
   before_action :specified_user, only: [:edit, :destroy]
 
   def home

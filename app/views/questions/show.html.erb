@@ -74,13 +74,11 @@
             <p>
               <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
               <%= comment.text %>
-              <%# 日本時間で表示する場合は必要なlocale用意してコメントアウト%>
-              <%#= simple_time(comment.created_at) %>
-              <%#// 日本時間で表示する場合は必要なlocale用意してコメントアウト%>
 
               <% if current_user.id == comment.user_id %>
                 <%= link_to '削除', question_comment_path(comment.question.id, comment.id), method: :delete %>
               <% end %>
+
             </p>
           <% end %>
         <% end %>
@@ -89,4 +87,4 @@
   <% end %>
 </div>
 
-<%= render "shared/footer" %>
+<%= render "shared/second_footer" %>
