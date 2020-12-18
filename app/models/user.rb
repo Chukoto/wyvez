@@ -13,8 +13,6 @@ class User < ApplicationRecord
   has_many :beauty_events
   has_one  :profile
 
-  enum gender: { yet: 0, already: 1 }
-
   with_options presence: true do
     validates :nickname
   end
