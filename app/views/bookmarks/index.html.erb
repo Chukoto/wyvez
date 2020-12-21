@@ -16,6 +16,13 @@
             <%= bookmark.question.text.truncate(150) %><%= link_to " 続きを読む", question_path(bookmark.question.id), class: "question"%>
           </div>
         </div>
+        <div class="question-image">
+          <% if bookmark.question.image.present? %>
+            <div class="image-presence">
+              画像あり<%= image_tag "camera.PNG", size: '30x30' %>
+            </div>
+          <% end %>
+        </div>
         <div class="posted-by">
           <%= link_to "#{bookmark.question.user.nickname}さん", profile_path(bookmark.question.user), class: "posted-by" %>
         </div>
