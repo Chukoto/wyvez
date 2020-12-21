@@ -9,7 +9,11 @@
     <%= link_to "美容スケジュールを作成する", new_beauty_event_path %>
   </div>
 
-  <div>
+  <div class="cost-info">
+    <div class="all-cost">
+      <%= "あなたが美容に費やした合計額" %>
+      <br><b><div class="size-twenty-four"><%= "#{@beauty_events.all.sum(:cost)}円" %></b></div>
+    </div>
   </div>
 
   <div class="events">
