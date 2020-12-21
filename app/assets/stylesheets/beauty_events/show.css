@@ -53,3 +53,14 @@
 }
 
 /* /削除ボタン */
+
+
+.cost-info {
+	display: flex;
+	justify-content: flex-end;
+}
+.all-cost {
+	text-align: center;
+	width: 25%;
+	border: 5px solid #c481cf;
+}
