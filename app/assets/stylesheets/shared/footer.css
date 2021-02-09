@@ -11,10 +11,31 @@
   padding: 0 0 5vh 0;
 }
 
-.footer-contents {
+.about-me {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5vh 0;
+}
+
+.portfolio {
+  margin: 0 20vw;
   display: flex;
-  justify-content: center;
-  margin-bottom: 5vh;
+  justify-content: space-around;
+}
+
+.footer-contents ul {
+  list-style: none;
+}
+
+.footer-left {
+  width: 50%;
+  text-align: center;
+}
+
+.footer-right {
+  width: 50%;
+  text-align: center;
 }
 
 .wyvez-details {
@@ -31,6 +52,10 @@
   color: #FFF;
   font-size: 12px;
   line-height: 30px;
+}
+
+.footer-link:hover {
+  text-decoration: none;
 }
 
 .logo {
