@@ -1,37 +1,31 @@
-<div class='footer'>
+<footer class='footer'>
   <div class="footer-image">
     <%= image_tag "vegas.JPG", class:"footer-image" %>
+    <div class="about-me">
+      About Me
+    </div>
+    <div class="portfolio">
+      <div class="footer-left">
+        <ul>
+          <li><%= link_to "WyvezのGithub", "https://github.com/Chukoto/wyvez", class: "footer-link" %></li>
+          <li><%= link_to "WordSrockのGithub", "https://github.com/Chukoto/wordstock", class: "footer-link" %></li>
+        </ul>
+      </div>
+      <div class="footer-right">
+        <ul>
+          <li><%= link_to "Github", "https://github.com/chukoto", class: "footer-link" %></li>
+          <li><%= link_to "Qiita", "https://qiita.com/NedzumiNeko", class: "footer-link" %></li>
+          <li><%= link_to "Twitter", "https://twitter.com/NedzumiNeko", class: "footer-link" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div>
     <p>Wyvez
     <br>性転換系女子のための
     <br>男と美の管理アプリ
     </p>
   </div>
-  <div class='footer-contents'>
-    <div class='wyvez-details'>
-      <h2 class='footer-content-head'>Wyvezについて</h2>
-      <ul>
-        <li><%= link_to '会社概要（運営会社)', "#", class: "footer-link" %></li>
-        <li><%= link_to 'プライバシーポリシー', "#", class: "footer-link" %></li>
-        <li><%= link_to 'Wyvez利用規約', "#", class: "footer-link" %></li>
-        <li><%= link_to 'ポイントに関する特約', "#", class: "footer-link" %></li>
-      </ul>
-    </div>
-    <div class='wyvez-details'>
-      <h2 class='footer-content-head'>Wyvezを見る</h2>
-      <ul>
-        <li><%= link_to 'カテゴリー一覧', "#", class: "footer-link" %></li>
-        <li><%= link_to 'ブランド一覧', "#", class: "footer-link" %></li>
-      </ul>
-    </div>
-    <div class='wyvez-details'>
-      <h2 class='footer-content-head'>Wyvezについて</h2>
-      <ul>
-        <li><%= link_to 'Wyvezガイド', "#", class: "footer-link" %></li>
-        <li><%= link_to 'Wyvezロゴ利用ガイドライン', "#", class: "footer-link" %></li>
-        <li><%= link_to 'お知らせ', "#", class: "footer-link" %></li>
-      </ul>
-    </div>
-  </div>
   <%= link_to image_tag("wyvez-logo.PNG", class:"logo"), "#" %>
   <p>© Wyvez</p>
-</div>
+</footer>
